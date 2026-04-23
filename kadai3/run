@@ -1,0 +1,2 @@
+gcc kadai3.c -O3 -march=native -ffast-math -o main
+./main

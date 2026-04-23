@@ -1,0 +1,11 @@
+I have defined a couple of typedefs since I do it in every project I work on, since they have to be endianness independent and alignment aware. I hope that's not a problem.
+
+The results were checked using this online tool: https://matrixcalc.org
+
+The multiplication algorithm has O(n³) complexity. Some minor optimization, such as accounting for cache locality by going through the indices in a different order other than the naive ordering, and using the following compiler tags have been used, although for an input space this small (N<6), they are completely irrelevant.
+
+gcc test.c -O3 -march=native -ffast-math -o test
+
+The restrict keyword has been used since the memory to which the pointers point to do not overlap.
+
+Furthermore, the matrix multiplication is a type of "embarrassingly parallel" problem. It can foster the use of multiple CPU cores through virtualization, i.e SIMD (AVX) (likely implemented by the compiler with the flags above), or an implementation using compute shaders.

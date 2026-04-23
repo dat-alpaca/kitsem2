@@ -1,0 +1,15 @@
+* float *p[4]
+An array of pointers of type float of size 4. It's equivalent to:
+[f32* f32* f32* f32*]
+
+* float (*p)[4]
+A single pointer to an array of floats of size 4. It's equivalent to a pointer that can point to:
+[1.0f 1.0f 2.0f 2.0f ...]
+
+-----
+Additionally:
+* const f32 (*const_matrix)[MAX_N];
+A single pointer to an array of size MAX_N of constant floats.
+
+* f32 (*matrix)[MAX_N];
+A single pointer to an array of size MAX_N of floats.
