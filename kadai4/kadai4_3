@@ -1,0 +1,3 @@
+The assignment constraint, i.e using only three matrices to compute the result, forces the use of a pointer swap to avoid copying memory unnecessarily. Therefore, instead of copying the result of the multiplication into a temporary buffer each time, two matrix pointers are used, and the result of the multiplication is swapped directly onto them.
+
+In other words, this process reduces the complexity of copying the matrix from O(n²), to a simple assignment operation, O(1). In the literacy, it is called "double buffering".

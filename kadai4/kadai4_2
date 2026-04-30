@@ -1,0 +1,32 @@
+#0:
+Value of n, k: 0 0
+Invalid input
+
+#1:
+Value of n, k: 10 10
+Invalid input
+
+#2:
+Value of n, k: 1 1
+Column #0: 1
+1.00 
+
+#3:
+Value of n, k: 3 10
+Column #0: 1 2 3
+Column #1: 1 2 3
+Column #2: 1 2 3
+10077696.00 20155392.00 30233088.00 
+10077696.00 20155392.00 30233088.00 
+10077696.00 20155392.00 30233088.00
+
+#4:
+Value of n, k: 2 10
+Column #0: -1 2.1
+Column #1: 2 -1.1
+39982.38 -41980.44 
+-39981.38 41981.45
+
+#5:
+Value of n, k: -1 -1
+Invalid input
