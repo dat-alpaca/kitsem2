@@ -1,0 +1,13 @@
+malloc() vs calloc()
+
+Both malloc and calloc allocate data in the heap, and return a pointer to that address, which can then be used by a stack pointer
+to manipulate this data.
+
+Function definitions:
+void *malloc(size_t size);
+void *calloc(size_t elementCount, size_t size);
+
+malloc() does not zero out the memory, meaning that it leaves the data as is.
+calloc() does zero out the memory, that is, it makes sure that all 'elementCount' values start at 0.
+
+Theorically, malloc is "faster" than calloc, however for most applications, the runtime performance difference is negligible.

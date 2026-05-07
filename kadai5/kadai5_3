@@ -1,0 +1,14 @@
+The core technique used to solve this problem is dynamic memory allocation.
+In a C program, whenever you create a variable, it is store in the stack. Function scope and other
+expressions modify the stack accordingly. However, The operating systems impose a limitation as
+to how much memory there can be present on the stack. Data stored using the stack is also highly predictable.
+
+However, the problem requires an unknown amount of memory to be allocated at runtime. To solve it,
+the data is allocated in the "heap" region.
+
+The malloc() function is a standard library function compliant with most major C compilers. The explanation below, is
+however, POSIX-specific.
+
+Whenever the user calls malloc(), a call to "mmap" (or sbrk) is issued. This system call asks the operating system for a "n" memory pages. The size of a memory page depends on the operating system, and defines the memory granularity of such. In red-hat based distributions, the memory page size is usually 4KB. 
+
+The malloc() function then returns the address pointed to the heap region allocated using "mmap". Essentially, this gives the user the freedom to allocate an arbitrary number of bytes. The malloc function is also responsible for keeping track of multiple allocations, and multiple frees. It also uses mutexes to make it thread-safe.

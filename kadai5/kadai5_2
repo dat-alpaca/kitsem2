@@ -1,0 +1,39 @@
+Input and output data is separated by \n in the actual files. White space was used to make the execution results more readable.
+
+#0:
+./main
+usage: main <input> <output>
+
+#1:
+./main input
+usage: main <input> <output>
+
+#1:
+./main input output
+input: 5 1 2 3 4 5
+output: 1 2 3 4 5
+
+#2:
+./main input output
+input :  8 .01 -2 34.3 44 505.12 1 2 3
+output: -2 0.01 1 2 3 34.3 44 505.12
+
+#3:
+./main input output
+input: 0 1230 3023 2003 20230 
+invalid amount of digits
+
+#4:
+./main input output
+input: -10 1230 3023 2003 20230 
+invalid amount of digits
+
+#5:
+./main input output
+input: hello 1230 3023 2003 20230 
+invalid amount of digits
+
+#6:
+./main input output
+input: 0.239 1230 3023 2003 20230 
+invalid amount of digits

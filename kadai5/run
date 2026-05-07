@@ -1,0 +1,2 @@
+gcc main.c -O3 -march=native -ffast-math -Wall -o main
+./main input output
