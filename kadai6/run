@@ -1,2 +1,2 @@
 gcc kadai6.c -Wall -O3 -o main
-./main credits input output
+./main n input output

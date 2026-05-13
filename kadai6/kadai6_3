@@ -1,0 +1,11 @@
+The most significant shift from Assignment 5 is using the generic library sorting function, qsort. This function requires passing a comparison function pointer as an argument, since it doesn't care about the data it's handling. It expects void* arguments for flexibility, and it  returns an integer depending on the outcome.
+
+Furthermore, instead of managing raw buffers of bytes or doubles, we group related data (GPA, credits, name) into a single entity, in this case "student". 
+The typedef expression allows us to treat "student" as a first-class type, which improves code readability.
+
+======================================================================
+I have also implemented a "pseudo-hashmap-without-hashing" (or more appropriately, a lookup table) to take care of the comparison modes and functions.
+This improves readability and allows the user to add entries to a table rather than creating an endless amount of "if" expressions.
+This also allows the program flow to rely on an external file, if need be.
+
+Several assertions have been scattered around the program to ensure everything is working as intended. It was preferred for simplicity sake, but error enums and data checking could also have been an option.

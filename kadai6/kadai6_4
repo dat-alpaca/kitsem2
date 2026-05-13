@@ -1,0 +1,14 @@
+This is probably over-engineered, so I apologize in advance.
+The comments above each section represent the files I had these sections on. Since the submission page does not allow multiple files, I have just sticked them together in a single translation unit, and made the helper functions static.
+
+First, I have provided a more robust implementation of the "buffer" struct present in my submission for kadai5. It serves as a generic stack-based memory arena using the default CRT allocator. As the program's complexity grows, it is a good idea to implement a pool memory arena with a free list to properly handle memory frees at any arbitrary address, a limitation that stack-based memory arenas do not have the luxury to afford. Allowing the user to specify a generic memory allocator is also a good idea, as memory allocation should not be the arena's responsibility.
+
+This arena does not take into account memory alignment, which is why "student" has a very peculiar name character count: 244. As is the case for most major compilers, the padding requirements is based on the ordering of the elements inside the struct.
+
+In simpler words, if you remove the name from the struct, you are left with a 64-bit aligned struct with two elements: an i64 (64-bit), an f32 (32-bit),
+and extra padding (32-bit), which results in a 16 byte structure.
+
+To fill up the gaps and reach 256 bytes, all you need to do is to subtract 256 from 8 (64 bits) and 4 (32 bits), which results in the 244 bytes left for name.
+This alignment is required in older cpus. Modern CPUs can handle byte granularity, however it increases speed, albeit not significantly in this exercise.
+
+Finally, the program should allow up to 256 MiB of student data.

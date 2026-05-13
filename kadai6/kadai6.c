@@ -233,10 +233,13 @@ student_comparison_result student_compare_name(const void* lhs, const void* rhs)
     student* rhsStudent = (student*)rhs;
 
     i32 result = strcmp(lhsStudent->name, rhsStudent->name);
-    if (result == 0)
-        return STUDENT_COMP_SAME;
 
-    return STUDENT_COMP_NOT_SAME;
+    if (result < 0) 
+        return STUDENT_COMP_RHS_GREATER;
+    if (result > 0) 
+        return STUDENT_COMP_LHS_GREATER;
+
+    return STUDENT_COMP_SAME;
 }
 
 typedef student_comparison_result (*student_comparison_function)(const void* lhs, const void* rhs);
