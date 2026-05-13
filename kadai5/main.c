@@ -3,8 +3,6 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-#define MAX_LINE_LENGTH     (1 << 10)
-
 typedef uint64_t u64;
 typedef int64_t  i64;
 typedef uint8_t  u8;
