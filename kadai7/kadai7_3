@@ -1,0 +1,3 @@
+The assignment asked to take the previously implemented specific selection sort algorithm
+and implement it for students, using the qsort function callback signature. That is, it is
+now possible to choose a sorting function.

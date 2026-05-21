@@ -1,0 +1,78 @@
+#0:
+command: ./main
+error: usage: ./main <mode: gpa|credit|name> <input> <output>
+
+#1:
+command: ./main input
+error: usage: ./main <mode: gpa|credit|name> <input> <output>
+
+#2:
+command: ./main gpa does_not_exist output
+error: invalid input file
+
+#3:
+command: ./main afbfhsd input output
+error: invalid student comparison mode. available modes: gpa|credit|name>
+
+#4:
+commands:
+./main g input output
+./main gpa input output
+./main gpas input output
+
+input file:
+   5
+   3.8 120 Tanaka
+   3.2 95 Sato
+   3.3 110 Abe
+   0.0 20 Paulo Castro
+   4.0 80 Hoda
+
+output file:
+   0 20 Paulo Castro
+   3.2 95 Sato
+   3.3 110 Abe
+   3.8 120 Tanaka
+   4 80 Hoda
+
+#5:
+commands:
+./main c input output
+./main credit input output
+./main credits input output
+
+input file:
+   5
+   3.8 120 Tanaka
+   3.2 95 Sato
+   3.3 110 Abe
+   0.0 20 Paulo Castro
+   4.0 80 Hoda
+
+output file:
+   0 20 Paulo Castro
+   4 80 Hoda
+   3.2 95 Sato
+   3.3 110 Abe
+   3.8 120 Tanaka
+
+#6:
+commands:
+./main n input output
+./main name input output
+./main names input output
+
+input file:
+   5
+   3.8 120 Tanaka
+   3.2 95 Sato
+   3.3 110 Abe
+   0.0 20 Paulo Castro
+   4.0 80 Hoda
+
+output file:
+   3.3 110 Abe
+   4 80 Hoda
+   0 20 Paulo Castro
+   3.2 95 Sato
+   3.8 120 Tanaka

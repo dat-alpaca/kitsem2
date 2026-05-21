@@ -1,0 +1,2 @@
+gcc akutan.c -O3 -o akutan
+./akutan

@@ -1,2 +1,2 @@
-gcc kadai6.c -Wall -O3 -o main
+gcc kadai6.c -Wall -o main
 ./main n input output
