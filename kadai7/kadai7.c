@@ -134,6 +134,8 @@ static void student_from_file(FILE* file, buffer* const students, u64 count)
 
 static void student_array_to_file(FILE* file, buffer* students)
 {
+    fprintf(file, "%ld\n", buffer_size(students));
+
     student* studentData = (student*)students->data;
     for (u64 i = 0; i < buffer_size(students); ++i)
     {

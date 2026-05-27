@@ -1,0 +1,12 @@
+This assignment focused on implementing linked lists. Although it might seem like they are an improvement over a contiguous heap allocation, 
+there are many problems to it. Since this is a simple assignment, those considerations should cause minimal if any performance issues.
+
+However, linked lists introduce two problems: an increase in cache misses and indirections, which are relatively fine in most cases, but it also
+introduces continuous context switches. If the linked list need to be updated at a high rate, switching between kernel and user contexts will
+influence the performance of the program negatively.
+
+Moreover, it is much harder to free data appropriately in a list when compared to a single allocated chunk of heap memory.
+
+Therefore, if performance is a major concern for the project, especially when dealing with simple cases such as these, or a high amount of updates, it's
+better to use a malloc'd region of memory. Another way of mitigating this issue is creating a memory arena, which takes the memory ownership responsibility,
+and allows the linked list/heap allocated data to be treated as a data structure, rather than a combination of data structure and memory allocator.

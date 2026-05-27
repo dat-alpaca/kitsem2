@@ -1,0 +1,2 @@
+gcc kadai8.c -Wall -o main
+./main n input output
