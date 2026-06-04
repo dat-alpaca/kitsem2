@@ -1,0 +1,42 @@
+./main
+usage: ./main <mode: gpa|credit|name> <input> <output>
+
+./main n
+usage: ./main <mode: gpa|credit|name> <input> <output>
+
+./main n does_not_exist output
+invalid input file
+
+./main n input invalid_output
+invalid output file
+
+./main n input output
+(no rss memory available)
+failed allocate memory when reading student file
+
+./main credits input output
+input:
+2.8 120 Tanaka
+3.2 95 Sato
+3.3 110 Abe
+3.3 110 Babe
+3.3 110 Cabe
+3.3 110 Dabe
+3.3 110 Sabe
+0.0 20 Paulo Castro
+4.0 80 Hoda
+1 2 test
+3 4 ijo
+
+output:
+2.8 120 Tanaka
+3.3 110 Abe
+3.3 110 Babe
+3.3 110 Cabe
+3.3 110 Dabe
+3.3 110 Sabe
+3.2 95 Sato
+4 80 Hoda
+0 20 Paulo Castro
+3 4 ijo
+1 2 test
