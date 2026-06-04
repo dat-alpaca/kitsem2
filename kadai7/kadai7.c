@@ -177,9 +177,10 @@ static student_comparison_mode_table_item gStudentComparisonModeTable[] =
 student_comparison_mode student_comparison_mode_get(const char* string)
 {
     u64 length = strlen(string);
-    char* buffer = malloc(sizeof(char) * length);
+    char* buffer = malloc(sizeof(char) * length + 1);
     memccpy(buffer, string, sizeof(char), length);
     strlower(buffer, length);
+    buffer[length] = '\0';
 
     size_t itemCount = sizeof(gStudentComparisonModeTable) / sizeof(student_comparison_mode_table_item);
     student_comparison_mode mode = STUDENT_COMP_MODE_NONE;
