@@ -1,0 +1,24 @@
+-=-
+Data Size: 1000
+Unsorted Time: Sorting time: 0.005568 seconds
+Sorted Time:   Sorting time: 0.004255 seconds
+-=-
+Data Size: 2000
+Unsorted Time: Sorting time: 0.019996 seconds
+Sorted Time:   Sorting time: 0.016625 seconds
+-=-
+Data Size: 4000
+Unsorted Time: Sorting time: 0.067312 seconds
+Sorted Time:   Sorting time: 0.059420 seconds
+-=-
+Data Size: 8000
+Unsorted Time: Sorting time: 0.265182 seconds
+Sorted Time:   Sorting time: 0.242484 seconds
+-=-
+Data Size: 16000
+Unsorted Time: Sorting time: 1.192791 seconds
+Sorted Time:   Sorting time: 0.986341 seconds
+-=-
+Data Size: 32000
+Unsorted Time: Sorting time: 4.846748 seconds
+Sorted Time:   Sorting time: 3.777641 seconds

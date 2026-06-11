@@ -1,0 +1,20 @@
+I have used the following bash to perform the analysis:
+
+#!/bin/bash
+mkdir -p gen
+gcc gendata.c -O3 -o gen/gendata
+gcc kadai10.c -O3 -o main
+
+for size in 1000 2000 
+do
+    echo "-=-"
+    echo "Data Size: $size"
+    
+    ./gen/gendata "$size" "gen/raw_$size"
+    
+    echo -n "Unsorted Time: "
+    ./main name "gen/raw_$size" "gen/sorted_$size"
+    
+    echo -n "Sorted Time:   "
+    ./main name "gen/sorted_$size" "gen/temp"
+done

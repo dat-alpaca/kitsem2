@@ -1,0 +1,10 @@
+Using the values from the 16k element dataset and 32k element dataset:
+
+   elem.ratio: 32k/16k = 2
+   time ratio: 4.846748/1.192791 = 4.063367346 [unsorted]
+   time ratio: 3.777641/0.986341 = 3.829954346 [sorted]
+
+From this, it is clear that by doubling the element count, the time ratio quadruples. Therefore, it is said that the selection sort has a time complexity of O(n^2)
+
+It is also noted that, although the selection sort should perform the same for both sorted and unsorted algorithms, there is a slight difference in performance. This is likely due to branch prediction and compiler optimizations.
+
