@@ -1,0 +1,5 @@
+Since both programs from exercises 7 and 10 use the same underlying algorithm: the selection sort, they both have the same time complexity: O(n²)
+
+It is easy to prove that since, taking two dataset sorting times and taking their ratio, you find a value close to 4. Since two adjacent datasets are a multiple of two, it is proven that their complexities is, therefore, O(n²)
+
+However, it's clear that the algorithm in exercise 7 is slightly faster. For larger sizes, this difference becomes even more discrepant. This is due to the fact that, when using linked lists, the CPU is constantly getting cache-miss problems, whereas using a contiguous list this problem is less prominent, as the data is aligned and on the same cache line. Moreover, the exercise 10 program also introduces indirection by having to jump between pointers, which also causes performance issues.
