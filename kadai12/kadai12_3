@@ -1,0 +1,2 @@
+Since I have already implemented the student sorting algorithm in the last kadai, all I had to do was create a function that converts the generated BST back into a student linked list.
+This is done using an inorder transversal of the BST, creating and inserting the current node into the list sequentially.

@@ -1,0 +1,2 @@
+gcc kadai12.c -Wall -g -o main
+./main gpa input output

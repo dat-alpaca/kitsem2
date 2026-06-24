@@ -1,0 +1,6 @@
+This assignment implements a binary search tree after loading the student data into memory.
+
+It is also possible to modify the entire code to remove the singly linked-list dependency entirely, but as per instructions, I have
+written a wrapper to create a binary search tree instead.
+
+It also shows the tree using preorder transversal.

@@ -4,7 +4,7 @@ mkdir -p bin
 gcc gendata.c -O3 -o bin/gendata
 gcc kadai10.c -O3 -o bin/main
 
-for size in 1000 2000 4000 8000 16000 32000
+for size in 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000
 do
     echo "-=-"
     echo "Data Size: $size"

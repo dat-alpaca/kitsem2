@@ -1,24 +1,61 @@
 -=-
 Data Size: 1000
-Unsorted Time: Sorting time: 0.005568 seconds
-Sorted Time:   Sorting time: 0.004255 seconds
+Unsorted Time: Sorting time: 0.012533 seconds
+Sorted Time:   Sorting time: 0.012944 seconds
 -=-
 Data Size: 2000
-Unsorted Time: Sorting time: 0.019996 seconds
-Sorted Time:   Sorting time: 0.016625 seconds
+Unsorted Time: Sorting time: 0.052562 seconds
+Sorted Time:   Sorting time: 0.046682 seconds
 -=-
 Data Size: 4000
-Unsorted Time: Sorting time: 0.067312 seconds
-Sorted Time:   Sorting time: 0.059420 seconds
+Unsorted Time: Sorting time: 0.160996 seconds
+Sorted Time:   Sorting time: 0.157660 seconds
 -=-
 Data Size: 8000
-Unsorted Time: Sorting time: 0.265182 seconds
-Sorted Time:   Sorting time: 0.242484 seconds
+Unsorted Time: Sorting time: 0.570014 seconds
+Sorted Time:   Sorting time: 0.488596 seconds
 -=-
 Data Size: 16000
-Unsorted Time: Sorting time: 1.192791 seconds
-Sorted Time:   Sorting time: 0.986341 seconds
+Unsorted Time: ^Z
+[1]+  Stopped                    ./run_all.sh
+dat-alpaca@fedora:~/Projects/kitsem2/kadai10$ ./run_all.sh 
 -=-
-Data Size: 32000
-Unsorted Time: Sorting time: 4.846748 seconds
-Sorted Time:   Sorting time: 3.777641 seconds
+Data Size: 10000
+Unsorted Time: Sorting time: 0.911442 seconds
+Sorted Time:   Sorting time: 0.751595 seconds
+-=-
+Data Size: 20000
+Unsorted Time: Sorting time: 3.780343 seconds
+Sorted Time:   Sorting time: 3.049953 seconds
+-=-
+Data Size: 30000
+Unsorted Time: Sorting time: 8.489348 seconds
+Sorted Time:   Sorting time: 6.704033 seconds
+-=-
+Data Size: 40000
+Unsorted Time: Sorting time: 15.899865 seconds
+Sorted Time:   Sorting time: 11.747312 seconds
+-=-
+Data Size: 50000
+Unsorted Time: Sorting time: 24.092137 seconds
+Sorted Time:   Sorting time: 18.534225 seconds
+-=-
+Data Size: 60000
+Unsorted Time: Sorting time: 38.315950 seconds
+Sorted Time:   Sorting time: 27.110578 seconds
+-=-
+Data Size: 70000
+Unsorted Time: Sorting time: 51.750771 seconds
+Sorted Time:   Sorting time: 37.556717 seconds
+-=-
+Data Size: 80000
+Unsorted Time: Sorting time: 67.772814 seconds
+Sorted Time:   Sorting time: 49.007349 seconds
+-=-
+Data Size: 90000
+Unsorted Time: Sorting time: 84.872948 seconds
+Sorted Time:   Sorting time: 60.470169 seconds
+-=-
+Data Size: 100000
+Unsorted Time: Sorting time: 111.975545 seconds
+Sorted Time:   Sorting time: 73.987277 seconds
