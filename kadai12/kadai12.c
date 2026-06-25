@@ -7,6 +7,8 @@
 #include <stdbool.h>
 #include <inttypes.h>
 
+#define NON_OWNING
+
 #define KADAI_EXPECTED_ARGS     (4)
 #define KADAI_MODE_ARG          (1)
 #define KADAI_INPUT_FILE_ARG    (2)
@@ -37,7 +39,10 @@ typedef struct
 typedef struct student_node
 {
     student data;
+    
     struct student_node* next;
+    NON_OWNING struct student_node* left;
+    NON_OWNING struct student_node* right;
 } student_node;
 
 void student_node_destroy(student_node* head)
@@ -49,23 +54,6 @@ void student_node_destroy(student_node* head)
         free(current);
         current = next;
     }
-}
-
-/* student/bst_node.h */
-typedef struct student_bst_node
-{
-    student data;
-    struct student_bst_node* left;
-    struct student_bst_node* right;
-} student_bst_node;
-
-void student_bst_node_destroy(student_bst_node* root)
-{
-    if (root == NULL)
-        return;
-    student_bst_node_destroy(root->left);
-    student_bst_node_destroy(root->right);
-    free(root);
 }
 
 // student/input.h
@@ -92,6 +80,8 @@ student_node* student_node_from_file(FILE* file)
 
         newNode->data = current;
         newNode->next = NULL;
+        newNode->left = NULL;
+        newNode->right = NULL;
 
         if (head == NULL)
         {
@@ -256,76 +246,63 @@ static student_comparison_function student_comparison_function_get(student_compa
 }
 
 /* student/bst_node.h [continued, depends on compare_functions.h]*/
-static student_bst_node* student_bst_insert_node(student_bst_node* root, student data, student_comparison_function comparisonFunction)
+static student_node* student_bst_insert_node(student_node* root, student_node* node, student_comparison_function comparisonFunction)
 {
-    if (root == NULL)
+    if (!root)
     {
-        student_bst_node* newNode = (student_bst_node*)malloc(sizeof(student_bst_node));
-        if (newNode == NULL)
-        {
-            fprintf(stderr, "failed to allocate memory for BST\n");
-            exit(1);
-        }
-        newNode->data = data;
-        newNode->left = NULL;
-        newNode->right = NULL;
-
-        return newNode;
+        node->left = NULL;
+        node->right = NULL;
+        return node;
     }
 
-    if (comparisonFunction(&(data), &(root->data)) <= 0)
-        root->left = student_bst_insert_node(root->left, data, comparisonFunction);
+    if (comparisonFunction(&(node->data), &(root->data)) <= 0)
+        root->left = student_bst_insert_node(root->left, node, comparisonFunction);
     else
-        root->right = student_bst_insert_node(root->right, data, comparisonFunction);
+        root->right = student_bst_insert_node(root->right, node, comparisonFunction);
 
     return root;
 }
 
-static student_bst_node* student_bst_from_linked_list(student_node* head, student_comparison_function comparisonFunction)
+
+student_node* student_bst_from_linked_list(student_node* head, student_comparison_function comparisonFunction)
 {
-    student_bst_node* root = NULL;
+    student_node* root = NULL;
     student_node* current = head;
+
     while (current != NULL)
     {
-        root = student_bst_insert_node(root, current->data, comparisonFunction);
-        current = current->next;
+        student_node* next = current->next;
+        root = student_bst_insert_node(root, current, comparisonFunction);
+        current = next;
     }
 
     return root;
 }
 
-static void student_bst_to_linked_list_inorder(student_bst_node* root, student_node** head, student_node** tail)
+static void student_bst_to_linked_list_inorder(student_node* root, student_node** head, student_node** tail)
 {
     if (!root)
         return;
 
     student_bst_to_linked_list_inorder(root->left, head, tail);
 
-    student_node* newNode = (student_node*)malloc(sizeof(student_node));
-    if (!newNode)
-    {
-        fprintf(stderr, "BST to linked list: failed to allocate memory\n");
-        exit(1);
-    }
-
-    newNode->data = root->data;
-    newNode->next = NULL;
-
     if (!*head)
     {
-        *head = newNode;
-        *tail = newNode;
+        *head = root;
+        *tail = root;
     }
     else
     {
-        (*tail)->next = newNode;
-        *tail = newNode;
+        (*tail)->next = root;
+        *tail = root;
     }
 
+    root->next = NULL;
+    
     student_bst_to_linked_list_inorder(root->right, head, tail);
 }
 
-student_node* student_bst_to_linked_list(student_bst_node* root)
+student_node* student_bst_to_linked_list(student_node* root)
 {
     student_node* head = NULL;
     student_node* tail = NULL;
@@ -364,9 +341,8 @@ int main(int argc, char** argv)
     
     // BST & Sorting:
     student_comparison_function comparisonFunction = student_comparison_function_get(studentComparisonMode);
-
-    student_bst_node* bstRoot = student_bst_from_linked_list(studentHead, comparisonFunction);
-    student_node* sortedStudents = student_bst_to_linked_list(bstRoot);
+    studentHead = student_bst_from_linked_list(studentHead, comparisonFunction);
+    studentHead = student_bst_to_linked_list(studentHead);
 
     // Output:
     FILE* outputFile = fopen(argv[KADAI_OUTPUT_FILE_ARG], "w");
@@ -374,18 +350,15 @@ int main(int argc, char** argv)
     {
         fprintf(stderr, "invalid output file\n");
 
-        student_bst_node_destroy(bstRoot);
         student_node_destroy(studentHead);
-        student_node_destroy(sortedStudents);
+        student_node_destroy(studentHead);
         return 1;
     }
 
-    student_node_to_file(outputFile, sortedStudents);
+    student_node_to_file(outputFile, studentHead);
     fclose(outputFile);
 
-    student_bst_node_destroy(bstRoot);
     student_node_destroy(studentHead);
-    student_node_destroy(sortedStudents);
 
     return 0;
 }
