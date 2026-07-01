@@ -1,0 +1,42 @@
+For the selection sort algorithm (kadai 9), the asymptotic complexity is O(n²), regardless of whether the data
+is sorted or not.
+
+It is possible to see this behaviour by analyzing data points 50k and 100k:
+
+    50000  | 12.929857s
+    100000 | 61.682771s
+
+When n is doubled, T(n) increases by a factor of 4.77 (approximately 4, accounting for a proportionality constant).
+
+The same happens for sorted data:
+    50000  | 9.650714s
+    100000 | 38.147567s
+
+Which increases by a factor of 3.95.
+
+------------
+As for the binary search tree algorithm, the worse case scenario is actually O(n^2), which happens when the data is sorted. Since 
+a BST is not self-balancing, such as AVL-trees or RB-trees, the data structure collapses to a singly linked list, pointing either to the left or the right, depending on whether the data is sorted in ascending or descending order.
+
+However, for the average case, the complexity should be O(nlogn), which in fact is observable for the unsorted case:
+
+50000  | 0.015703s
+100000 | 0.037337s
+
+Let T(n) = c * nlogn, where c is the proportionality constant.
+
+For n=50k:
+    c = 2.01 * 10^-8
+
+For n=100k:
+    c = 2.25 * 10^-8
+
+Which indicates they have the same order of magnitude.
+
+The theoretical ratio between T(100k) and T(50k):
+    R = 2.13
+
+The actual ratio:
+    R' = 0.037337s / 0.015703s = 2.38
+
+That means that the empirical data is very close to the expected ratio, proving the algorithm runs in O(nlogn) time for the unsorted case. This slight variance could dependent on several things, such as impredictable hardware performance fluctuations, cache misses, and the nature of random data when building the tree, which leads to a tree that's not perfectly balanced. 

@@ -6,3 +6,7 @@ kadai10/gen
 kadai10/bin
 kadai10a/bin
 kadai10a/gen
+kadai13/bin
+kadai13/gen
+*.cache/
+kadai/build

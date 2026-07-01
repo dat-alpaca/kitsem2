@@ -1,2 +1,2 @@
 gcc kadai12.c -Wall -g -o main
-./main name input output
+./main n input output
