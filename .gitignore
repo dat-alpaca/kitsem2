@@ -10,3 +10,6 @@ kadai13/bin
 kadai13/gen
 *.cache/
 kadai/build
+dptr/
+hoda*/
+grade/
