@@ -1,0 +1,2 @@
+gcc main.c english.c japanese.c -Wall -g -o main
+./main $1

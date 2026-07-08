@@ -1,0 +1,15 @@
+I have also writen a more organized repo for this project:
+https://github.com/dat-alpaca/yagni-dates
+
+Using a json library to read the language files, and using a _() function that takes a string in the default language, and searches the corresponding language string (through the json string mapping) would be the best way to make a localization library.
+
+For example:
+
+_("Hello world")
+
+Which reads from:
+
+japanese.json:
+{
+    "Hello world": "おはようー、世界"
+}
